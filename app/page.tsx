@@ -1,101 +1,73 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { Button } from "@/components/ui/button"
+import { SideNav } from "@/components/side-nav"
+import { ScrollingTickers } from "@/components/scrolling-tickers"
+
+export default function Page() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="relative min-h-screen w-full overflow-hidden bg-black">
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-30"
+        >
+          <source 
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/31251-385265625_small-I8P33QBfpLSdc5y3dAnk9RWCw5GEyQ.mp4" 
+            type="video/mp4" 
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Side Navigation */}
+      <SideNav />
+
+      {/* Content Overlay */}
+      <div className="relative z-10 w-full h-full flex flex-col">
+        {/* Header Section */}
+        <div className="p-12 pr-24 sm:pr-12">
+          <h1 className="text-2xl font-extralight tracking-tight text-white opacity-0 animate-scale-in" style={{ animationDelay: '0.1s' }}>
+            Trend<span className="text-green-400">X</span>
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Center Content */}
+        <div className="flex-1 flex flex-col justify-center px-12 pr-24 sm:pr-12 space-y-12 mt-0 md:mt-32">
+          <div className="space-y-4 max-w-4xl md:ml-[200px]">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight tracking-wide leading-tight bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent opacity-0 animate-slide-up" style={{ animationDelay: '0.6s' }}>
+              Elevate your <span className="text-green-400 animate-pulse-gradient">wealth</span>, amplify your future
+            </h2>
+            <p className="text-2xl md:text-3xl lg:text-4xl font-extralight text-white/80 tracking-wider opacity-0 animate-slide-up" style={{ animationDelay: '0.7s' }}>
+              Where AI meets <span className="text-green-400">financial excellence</span>
+            </p>
+            <div className="pt-4 opacity-0 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+              <Button 
+                variant="ghost" 
+                size="lg"
+                className="text-2xl md:text-3xl font-extralight text-white bg-black/20 backdrop-blur-sm rounded-[999px] hover:bg-white/10 px-6 py-4 h-auto border border-white/10 transition-all duration-300 hover:scale-105"
+              >
+                Try now
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer - Fixed Position */}
+      <div className="fixed bottom-12 left-12 pr-24 sm:pr-12 z-20">
+        <p className="text-2xl text-white/80 font-extralight tracking-wide opacity-0 animate-fade-in" style={{ animationDelay: '0.9s' }}>
+          Your portfolio, <span className="text-green-400">reimagined</span>
+        </p>
+      </div>
+
+      {/* Scrolling Tickers */}
+      <ScrollingTickers />
     </div>
-  );
+  )
 }
+
