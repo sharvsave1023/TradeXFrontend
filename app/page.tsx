@@ -40,7 +40,7 @@ export default function Page() {
 
         <div className="relative z-10 w-full h-full flex flex-col">
           <div className="p-12 pr-24 sm:pr-12">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-white opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.3}s` }}>
+            <h1 className="text-2xl font-extralight tracking-tight text-white opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.3}s` }}>
               Trade<span className="text-green-400">X</span>
             </h1>
           </div>
