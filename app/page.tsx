@@ -46,7 +46,7 @@ export default function Page() {
           </div>
 
           <div className="flex-1 flex flex-col justify-center px-12 pr-24 sm:pr-12 space-y-12 mt-0 md:-mt-32">
-            <div className="space-y-4 max-w-4xl md:ml-[160px]">
+            <div className="space-y-4 max-w-4xl md:ml-[240px]">
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight tracking-wide leading-tight bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.5}s` }}>
                 Elevate your <span className="text-green-400">wealth</span>, amplify your future
               </h2>
