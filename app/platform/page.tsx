@@ -30,8 +30,8 @@ export default function PlatformPage() {
           </h1>
         </div>
 
-        <div className="px-12 pb-12">
-          <div className="ml-[100px] md:ml-[120px] w-[calc(100%-100px)] md:w-[calc(100%-120px)] h-[calc(100vh-180px)] rounded-3xl bg-black/20 backdrop-blur-sm border border-white/10">
+        <div className="px-4 pb-4 md:px-12 md:pb-12">
+          <div className="mx-4 md:mx-0 md:ml-[120px] w-[calc(100%-32px)] md:w-[calc(100%-120px)] h-[calc(100vh-180px)] rounded-3xl bg-black/20 backdrop-blur-sm border border-white/10">
           </div>
         </div>
       </div>
