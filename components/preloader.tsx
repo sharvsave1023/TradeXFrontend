@@ -9,7 +9,7 @@ export function Preloader() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 3500)
+    }, 3800) // Increased from 3500 to 3800 to account for fade out
 
     const counter = setInterval(() => {
       setCount(prev => (prev < 100 ? prev + 1 : prev))
@@ -24,7 +24,7 @@ export function Preloader() {
   if (!isLoading) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black transition-opacity duration-300 pointer-events-none" style={{ opacity: count === 100 ? 0 : 1 }}>
       <div className="absolute inset-0 overflow-hidden opacity-20">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]">
           {[...Array(4)].map((_, i) => (
