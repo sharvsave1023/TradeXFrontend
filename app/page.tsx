@@ -4,13 +4,23 @@ import { Button } from "@/components/ui/button"
 import { SideNav } from "@/components/side-nav"
 import { ScrollingTickers } from "@/components/scrolling-tickers"
 import { Preloader } from "@/components/preloader"
+import { useEffect, useState } from 'react'
 
 export default function Page() {
+  const [isFirstVisit, setIsFirstVisit] = useState(true)
+
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('hasVisited')
+    setIsFirstVisit(!hasVisited)
+  }, [])
+
+  const baseDelay = isFirstVisit ? 3.5 : 1
+  
   return (
     <>
       <Preloader />
-      <div className="relative min-h-screen w-full overflow-hidden bg-black opacity-0 animate-fade-in" style={{ animationDelay: '2.75s', backgroundColor: 'black' }}>
-        <div className="absolute inset-0 w-full h-full">
+      <div className="fixed inset-0 min-h-screen w-full overflow-hidden bg-black opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay}s` }}>
+        <div className="absolute inset-0 w-full h-full z-0">
           <video
             autoPlay
             loop
@@ -30,20 +40,20 @@ export default function Page() {
 
         <div className="relative z-10 w-full h-full flex flex-col">
           <div className="p-12 pr-24 sm:pr-12">
-            <h1 className="text-2xl font-extralight tracking-tight text-white opacity-0 animate-fade-in" style={{ animationDelay: '4.0s' }}>
+            <h1 className="text-2xl font-extralight tracking-tight text-white opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.3}s` }}>
               Trade<span className="text-green-400">X</span>
             </h1>
           </div>
 
-          <div className="flex-1 flex flex-col justify-center px-12 pr-24 sm:pr-12 space-y-12 mt-0 md:mt-32">
-            <div className="space-y-4 max-w-4xl md:ml-[200px]">
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight tracking-wide leading-tight bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent opacity-0 animate-fade-in" style={{ animationDelay: '4.2s' }}>
+          <div className="flex-1 flex flex-col justify-center px-12 pr-24 sm:pr-12 space-y-12 mt-0 md:-mt-32">
+            <div className="space-y-4 max-w-4xl md:ml-[160px]">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-extralight tracking-wide leading-tight bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.5}s` }}>
                 Elevate your <span className="text-green-400">wealth</span>, amplify your future
               </h2>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-extralight text-white/80 tracking-wider opacity-0 animate-fade-in" style={{ animationDelay: '4.4s' }}>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-extralight text-white/80 tracking-wider opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.7}s` }}>
                 Where AI meets <span className="text-green-400">financial excellence</span>
               </p>
-              <div className="pt-4 opacity-0 animate-fade-in" style={{ animationDelay: '4.6s' }}>
+              <div className="pt-4 opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.9}s` }}>
                 <Button 
                   variant="ghost" 
                   size="lg"
@@ -57,7 +67,7 @@ export default function Page() {
         </div>
 
         <div className="fixed bottom-12 left-12 pr-24 sm:pr-12 z-20">
-          <p className="text-2xl text-white/80 font-extralight tracking-wide opacity-0 animate-fade-in" style={{ animationDelay: '4.8s' }}>
+          <p className="text-2xl text-white/80 font-extralight tracking-wide opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 1.1}s` }}>
             Your portfolio, <span className="text-green-400">reimagined</span>
           </p>
         </div>

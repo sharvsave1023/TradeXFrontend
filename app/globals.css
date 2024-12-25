@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add black background to html and body */
+html, body {
+  background-color: black;
+}
+
 @layer utilities {
   .animate-scroll-up {
     animation: scroll-up 180s linear infinite;
@@ -25,6 +30,10 @@
 
   .animate-spin-slow {
     animation: spin 4s linear infinite;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
   }
 
   .animate-morph {
