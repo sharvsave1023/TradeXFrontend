@@ -3,7 +3,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export function SideNav() {
-  const isOnPlatform = typeof window !== 'undefined' && window.location.pathname === '/platform'
 
   return (
     <div className="fixed right-4 top-4 md:right-auto md:left-8 md:top-1/2 md:-translate-y-1/2 p-4 z-20">
