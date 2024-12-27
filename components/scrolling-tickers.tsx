@@ -47,7 +47,7 @@ export function ScrollingTickers() {
       {/* Third ticker - scrolling up */}
       <div className="relative w-12 overflow-hidden whitespace-nowrap h-screen bg-black/50 backdrop-blur-sm rounded-[999px]">
         <div 
-          className="absolute animate-scroll-up inline-block text-lg tracking-[0.2em] font-extralight"
+          className="absolute animate-scroll-up inline-block text-lg tracking-[0.2em] font-extralight [animation-delay:4s]"
           style={{ writingMode: 'vertical-rl' }}
           dangerouslySetInnerHTML={{ __html: formattedText.repeat(6) }}
         />
