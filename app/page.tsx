@@ -57,7 +57,7 @@ export default function Page() {
                 <Button 
                   variant="ghost" 
                   size="lg"
-                  className="text-lg sm:text-xl md:text-3xl font-extralight text-white bg-black/20 backdrop-blur-sm rounded-[999px] hover:bg-white/10 px-6 py-4 h-auto border border-white/10 transition-all duration-300 hover:scale-105"
+                  className="text-lg sm:text-xl md:text-3xl font-extralight text-white bg-black/20 backdrop-blur-sm rounded-[999px] hover:bg-white/100 px-6 py-4 h-auto border border-white/10 transition-all duration-300 hover:scale-105"
                 >
                   Try now
                 </Button>
