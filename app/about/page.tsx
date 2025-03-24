@@ -27,17 +27,17 @@ export default function AboutPage() {
               
               <div className="flex justify-center items-center gap-6">
                 <div className="p-6 text-center">
-                  <h4 className="text-2xl text-green-400">Rayhan</h4>
-                  <p className="text-white/60 text-lg">Role / Stuff we did</p>
-                </div>
-                <div className="w-px h-24 bg-white/10"></div>
-                <div className="p-6 text-center">
                   <h4 className="text-2xl text-green-400">Sharv</h4>
                   <p className="text-white/60 text-lg">Role / Stuff we did</p>
                 </div>
                 <div className="w-px h-24 bg-white/10"></div>
                 <div className="p-6 text-center">
-                  <h4 className="text-2xl text-green-400">Sri</h4>
+                  <h4 className="text-2xl text-green-400">Varun</h4>
+                  <p className="text-white/60 text-lg">Role / Stuff we did</p>
+                </div>
+                <div className="w-px h-24 bg-white/10"></div>
+                <div className="p-6 text-center">
+                  <h4 className="text-2xl text-green-400">Bakry</h4>
                   <p className="text-white/60 text-lg">Role / Stuff we did</p>
                 </div>
               </div>
