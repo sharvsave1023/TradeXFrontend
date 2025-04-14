@@ -15,21 +15,13 @@ export function Preloader() {
       return
     }
 
-    let timer: NodeJS.Timeout
-    let counter: NodeJS.Timeout
-
-    const cleanup = () => {
-      if (timer) clearTimeout(timer)
-      if (counter) clearInterval(counter)
-    }
-
-    timer = setTimeout(() => {
+    const timer: NodeJS.Timeout = setTimeout(() => {
       cleanup()
       setIsLoading(false)
       localStorage.setItem('hasVisited', 'true')
     }, 3800)
 
-    counter = setInterval(() => {
+    const counter: NodeJS.Timeout = setInterval(() => {
       setCount(prev => {
         if (prev >= 100) {
           clearInterval(counter)
@@ -38,6 +30,11 @@ export function Preloader() {
         return prev + 1
       })
     }, 35)
+
+    const cleanup = () => {
+      clearTimeout(timer)
+      clearInterval(counter)
+    }
 
     return cleanup
   }, [])
