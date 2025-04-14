@@ -28,17 +28,20 @@ export default function AboutPage() {
               <div className="flex justify-center items-center gap-6">
                 <div className="p-6 text-center">
                   <h4 className="text-2xl text-green-400">Sharv</h4>
-                  <p className="text-white/60 text-lg">Role / Stuff we did</p>
+                  <p className="text-white/60 text-lg">Primarily quantitative research, looking at effective quantitative risk
+                  management techniques and ways to maximize return. </p>
                 </div>
                 <div className="w-px h-24 bg-white/10"></div>
                 <div className="p-6 text-center">
                   <h4 className="text-2xl text-green-400">Varun</h4>
-                  <p className="text-white/60 text-lg">Role / Stuff we did</p>
+                  <p className="text-white/60 text-lg">Building the website and structuring the site to seamlessly handle requests 
+                  back and forth from user-side to the backend. </p>
                 </div>
                 <div className="w-px h-24 bg-white/10"></div>
                 <div className="p-6 text-center">
                   <h4 className="text-2xl text-green-400">Bakry</h4>
-                  <p className="text-white/60 text-lg">Role / Stuff we did</p>
+                  <p className="text-white/60 text-lg">Testing different portfolio models and translating user goals into parameters for
+                  the portfolio models. </p>
                 </div>
               </div>
             </div>

@@ -15,19 +15,31 @@ export function Preloader() {
       return
     }
 
-    const timer = setTimeout(() => {
+    let timer: NodeJS.Timeout
+    let counter: NodeJS.Timeout
+
+    const cleanup = () => {
+      if (timer) clearTimeout(timer)
+      if (counter) clearInterval(counter)
+    }
+
+    timer = setTimeout(() => {
+      cleanup()
       setIsLoading(false)
       localStorage.setItem('hasVisited', 'true')
     }, 3800)
 
-    const counter = setInterval(() => {
-      setCount(prev => (prev < 100 ? prev + 1 : prev))
+    counter = setInterval(() => {
+      setCount(prev => {
+        if (prev >= 100) {
+          clearInterval(counter)
+          return 100
+        }
+        return prev + 1
+      })
     }, 35)
 
-    return () => {
-      clearTimeout(timer)
-      clearInterval(counter)
-    }
+    return cleanup
   }, [])
 
   if (!isLoading || !shouldShow) return null
