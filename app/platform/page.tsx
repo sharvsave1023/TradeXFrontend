@@ -1,6 +1,7 @@
 'use client'
 
 import { SideNav } from "@/components/side-nav"
+import { PreferencesSection } from "@/components/platform/preferences-section"
 
 export default function PlatformPage() {
   return (
@@ -30,12 +31,33 @@ export default function PlatformPage() {
           </h1>
         </div>
 
-        <div className="px-4 pb-4 md:px-12 md:pb-12">
-          <div className="mx-4 md:mx-0 md:ml-[120px] w-[calc(100%-32px)] md:w-[calc(100%-120px)] h-[calc(100vh-180px)] rounded-3xl bg-black/20 backdrop-blur-sm border border-white/10">
+        <div className="flex-1 flex px-4 pb-4 md:px-12 md:pb-12">
+          {/* Main content area with margin for sidebar */}
+          <div className="flex-1 flex ml-[120px]">
+            {/* Preferences Section */}
+            <div className="w-80 mr-6">
+              <div className="rounded-3xl bg-gray-800/40 backdrop-blur-md border border-white/20 shadow-lg shadow-black/30">
+                <h2 className="text-xl font-light text-white p-6 border-b border-white/20">
+                  Investment Preferences
+                </h2>
+                <PreferencesSection />
+              </div>
+            </div>
+
+            {/* Statistics Section */}
+            <div className="flex-1">
+              <div className="rounded-3xl bg-gray-800/40 backdrop-blur-md border border-white/20 shadow-lg shadow-black/30 h-[calc(100vh-180px)]">
+                <h2 className="text-xl font-light text-white p-6 border-b border-white/20">
+                  Portfolio Statistics
+                </h2>
+                <div className="p-6">
+                  {/* Statistics content will go here */}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   )
 }
