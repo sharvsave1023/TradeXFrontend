@@ -36,8 +36,8 @@ export default function PlatformPage() {
           <div className="flex-1 flex ml-[120px]">
             {/* Preferences Section */}
             <div className="w-80 mr-6">
-              <div className="rounded-3xl bg-black/20 backdrop-blur-sm border border-white/10">
-                <h2 className="text-xl font-light text-white p-6 border-b border-white/10">
+              <div className="rounded-3xl bg-gray-800/40 backdrop-blur-md border border-white/20 shadow-lg shadow-black/30">
+                <h2 className="text-xl font-light text-white p-6 border-b border-white/20">
                   Investment Preferences
                 </h2>
                 <PreferencesSection />
@@ -46,8 +46,8 @@ export default function PlatformPage() {
 
             {/* Statistics Section */}
             <div className="flex-1">
-              <div className="rounded-3xl bg-black/20 backdrop-blur-sm border border-white/10 h-[calc(100vh-180px)]">
-                <h2 className="text-xl font-light text-white p-6 border-b border-white/10">
+              <div className="rounded-3xl bg-gray-800/40 backdrop-blur-md border border-white/20 shadow-lg shadow-black/30 h-[calc(100vh-180px)]">
+                <h2 className="text-xl font-light text-white p-6 border-b border-white/20">
                   Portfolio Statistics
                 </h2>
                 <div className="p-6">
