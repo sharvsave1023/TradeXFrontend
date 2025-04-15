@@ -32,6 +32,31 @@ interface PortfolioGraphsProps {
   rebalancingFrequency: string
 }
 
+interface AssetAllocation {
+  labels: string[]
+  datasets: {
+    data: number[]
+    backgroundColor: string[]
+    borderColor: string[]
+    borderWidth: number
+  }[]
+}
+
+interface PerformanceData {
+  labels: string[]
+  datasets: {
+    label: string
+    data: number[]
+    borderColor: string
+    tension: number
+  }[]
+}
+
+interface PortfolioData {
+  allocation: AssetAllocation
+  performance: PerformanceData
+}
+
 const generateRandomPerformanceData = (baseValue: number, volatility: number) => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   let currentValue = baseValue
@@ -93,14 +118,14 @@ export function PortfolioGraphs({
   sectorFocus,
   rebalancingFrequency,
 }: PortfolioGraphsProps) {
-  const [portfolioData, setPortfolioData] = useState<any>(null)
+  const [portfolioData, setPortfolioData] = useState<PortfolioData | null>(null)
 
   useEffect(() => {
     const generatePortfolioData = () => {
       // Generate random allocation based on risk tolerance
       const allocation = generateRandomAllocation(riskTolerance)
       
-      const assetAllocation = {
+      const assetAllocation: AssetAllocation = {
         labels: ['Stocks', 'Bonds', 'Cash', 'Alternative'],
         datasets: [
           {
@@ -125,7 +150,7 @@ export function PortfolioGraphs({
       // Generate random performance data with different volatility based on risk tolerance
       const volatility = riskTolerance === 'Conservative' ? 0.02 : 
                         riskTolerance === 'Moderate' ? 0.04 : 0.06
-      const performanceData = {
+      const performanceData: PerformanceData = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
           {
