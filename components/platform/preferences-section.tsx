@@ -7,13 +7,46 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown"
+import { Button } from "@/components/ui/button"
 
-export function PreferencesSection() {
+interface PreferencesSectionProps {
+  onPortfolioGenerated: (data: {
+    riskTolerance: string
+    investmentHorizon: string
+    investmentAmount: string
+    sectorFocus: string
+    rebalancingFrequency: string
+  }) => void
+}
+
+export function PreferencesSection({ onPortfolioGenerated }: PreferencesSectionProps) {
   const [riskTolerance, setRiskTolerance] = useState('Select Risk Level')
   const [investmentHorizon, setInvestmentHorizon] = useState('Select Time Frame')
   const [investmentAmount, setInvestmentAmount] = useState('Select Amount')
   const [sectorFocus, setSectorFocus] = useState('Select Sectors')
   const [rebalancingFrequency, setRebalancingFrequency] = useState('Select Frequency')
+
+  const handleSubmit = () => {
+    // Validate that all preferences are selected
+    if (
+      riskTolerance === 'Select Risk Level' ||
+      investmentHorizon === 'Select Time Frame' ||
+      investmentAmount === 'Select Amount' ||
+      sectorFocus === 'Select Sectors' ||
+      rebalancingFrequency === 'Select Frequency'
+    ) {
+      alert('Please select all preferences before submitting')
+      return
+    }
+
+    onPortfolioGenerated({
+      riskTolerance,
+      investmentHorizon,
+      investmentAmount,
+      sectorFocus,
+      rebalancingFrequency,
+    })
+  }
 
   return (
     <div className="space-y-4 p-6">
@@ -77,6 +110,15 @@ export function PreferencesSection() {
             <DropdownMenuItem onSelect={() => setRebalancingFrequency('Annually')}>Annually</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+      </div>
+
+      <div className="pt-4">
+        <Button 
+          onClick={handleSubmit}
+          className="w-full bg-green-500 hover:bg-green-600 text-white"
+        >
+          Generate Portfolio
+        </Button>
       </div>
     </div>
   )

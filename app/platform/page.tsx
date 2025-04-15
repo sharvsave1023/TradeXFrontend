@@ -1,9 +1,19 @@
 'use client'
 
+import { useState } from 'react'
 import { SideNav } from "@/components/side-nav"
 import { PreferencesSection } from "@/components/platform/preferences-section"
+import { PortfolioGraphs } from "@/components/platform/portfolio-graphs"
 
 export default function PlatformPage() {
+  const [portfolioData, setPortfolioData] = useState<{
+    riskTolerance: string
+    investmentHorizon: string
+    investmentAmount: string
+    sectorFocus: string
+    rebalancingFrequency: string
+  } | null>(null)
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-black">
       <div className="absolute inset-0 w-full h-full z-0">
@@ -40,7 +50,7 @@ export default function PlatformPage() {
                 <h2 className="text-xl font-light text-white p-6 border-b border-white/20">
                   Investment Preferences
                 </h2>
-                <PreferencesSection />
+                <PreferencesSection onPortfolioGenerated={setPortfolioData} />
               </div>
             </div>
 
@@ -51,7 +61,15 @@ export default function PlatformPage() {
                   Portfolio Statistics
                 </h2>
                 <div className="p-6">
-                  {/* Statistics content will go here */}
+                  {portfolioData ? (
+                    <PortfolioGraphs {...portfolioData} />
+                  ) : (
+                    <div className="flex items-center justify-center h-full">
+                      <p className="text-white/60 text-lg font-light">
+                        Select your investment preferences to generate portfolio statistics
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
