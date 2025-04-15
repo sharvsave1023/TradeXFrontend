@@ -17,9 +17,10 @@ interface PreferencesSectionProps {
     sectorFocus: string
     rebalancingFrequency: string
   }) => void
+  isPortfolioGenerated: boolean
 }
 
-export function PreferencesSection({ onPortfolioGenerated }: PreferencesSectionProps) {
+export function PreferencesSection({ onPortfolioGenerated, isPortfolioGenerated }: PreferencesSectionProps) {
   const [riskTolerance, setRiskTolerance] = useState('Select Risk Level')
   const [investmentHorizon, setInvestmentHorizon] = useState('Select Time Frame')
   const [investmentAmount, setInvestmentAmount] = useState('Select Amount')
@@ -117,7 +118,7 @@ export function PreferencesSection({ onPortfolioGenerated }: PreferencesSectionP
           onClick={handleSubmit}
           className="w-full bg-green-500 hover:bg-green-600 text-white"
         >
-          Generate Portfolio
+          {isPortfolioGenerated ? 'Update Portfolio' : 'Generate Portfolio'}
         </Button>
       </div>
     </div>
