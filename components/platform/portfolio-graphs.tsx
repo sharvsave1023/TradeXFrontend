@@ -28,30 +28,83 @@ ChartJS.register(
 interface PortfolioGraphsProps {
   riskTolerance: string
   investmentHorizon: string
-  investmentAmount: string
   sectorFocus: string
   rebalancingFrequency: string
+}
+
+const generateRandomPerformanceData = (baseValue: number, volatility: number) => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  let currentValue = baseValue
+  return months.map(() => {
+    // Generate a random change between -volatility and +volatility
+    const change = (Math.random() * 2 - 1) * volatility
+    currentValue = currentValue * (1 + change)
+    return Math.round(currentValue * 100) / 100
+  })
+}
+
+const generateRandomAllocation = (riskTolerance: string) => {
+  const allocations = {
+    Conservative: {
+      stocks: 40,
+      bonds: 45,
+      cash: 10,
+      alternative: 5
+    },
+    Moderate: {
+      stocks: 60,
+      bonds: 30,
+      cash: 5,
+      alternative: 5
+    },
+    Aggressive: {
+      stocks: 80,
+      bonds: 15,
+      cash: 0,
+      alternative: 5
+    }
+  }
+
+  // Add some randomness to the base allocation
+  const baseAllocation = allocations[riskTolerance as keyof typeof allocations]
+  const randomize = (value: number) => {
+    const variation = Math.random() * 10 - 5 // Random number between -5 and 5
+    return Math.max(0, Math.min(100, value + variation))
+  }
+
+  const stocks = randomize(baseAllocation.stocks)
+  const bonds = randomize(baseAllocation.bonds)
+  const cash = randomize(baseAllocation.cash)
+  const alternative = randomize(baseAllocation.alternative)
+
+  // Normalize to ensure they sum to 100
+  const total = stocks + bonds + cash + alternative
+  return {
+    stocks: Math.round((stocks / total) * 100),
+    bonds: Math.round((bonds / total) * 100),
+    cash: Math.round((cash / total) * 100),
+    alternative: Math.round((alternative / total) * 100)
+  }
 }
 
 export function PortfolioGraphs({
   riskTolerance,
   investmentHorizon,
-  investmentAmount,
   sectorFocus,
   rebalancingFrequency,
 }: PortfolioGraphsProps) {
   const [portfolioData, setPortfolioData] = useState<any>(null)
 
   useEffect(() => {
-    // Simulate portfolio data based on user preferences
     const generatePortfolioData = () => {
-      // This is a simplified example - in a real app, you would make an API call
-      // to get actual portfolio recommendations based on the preferences
+      // Generate random allocation based on risk tolerance
+      const allocation = generateRandomAllocation(riskTolerance)
+      
       const assetAllocation = {
         labels: ['Stocks', 'Bonds', 'Cash', 'Alternative'],
         datasets: [
           {
-            data: [60, 30, 5, 5],
+            data: [allocation.stocks, allocation.bonds, allocation.cash, allocation.alternative],
             backgroundColor: [
               'rgba(75, 192, 192, 0.6)',
               'rgba(54, 162, 235, 0.6)',
@@ -69,12 +122,15 @@ export function PortfolioGraphs({
         ],
       }
 
+      // Generate random performance data with different volatility based on risk tolerance
+      const volatility = riskTolerance === 'Conservative' ? 0.02 : 
+                        riskTolerance === 'Moderate' ? 0.04 : 0.06
       const performanceData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
           {
             label: 'Portfolio Performance',
-            data: [100, 105, 110, 108, 115, 120],
+            data: generateRandomPerformanceData(100, volatility),
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1,
           },
@@ -88,7 +144,7 @@ export function PortfolioGraphs({
     }
 
     generatePortfolioData()
-  }, [riskTolerance, investmentHorizon, investmentAmount, sectorFocus, rebalancingFrequency])
+  }, [riskTolerance, investmentHorizon, sectorFocus, rebalancingFrequency])
 
   if (!portfolioData) return null
 
@@ -109,6 +165,13 @@ export function PortfolioGraphs({
                     color: 'white',
                   },
                 },
+                tooltip: {
+                  callbacks: {
+                    label: (context) => {
+                      return `${context.label}: ${context.raw}%`
+                    }
+                  }
+                }
               },
             }}
           />
@@ -129,11 +192,19 @@ export function PortfolioGraphs({
                     color: 'white',
                   },
                 },
+                tooltip: {
+                  callbacks: {
+                    label: (context) => {
+                      return `Value: $${context.raw}`
+                    }
+                  }
+                }
               },
               scales: {
                 y: {
                   ticks: {
                     color: 'white',
+                    callback: (value) => `$${value}`
                   },
                   grid: {
                     color: 'rgba(255, 255, 255, 0.1)',

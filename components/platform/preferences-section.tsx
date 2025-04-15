@@ -13,7 +13,6 @@ interface PreferencesSectionProps {
   onPortfolioGenerated: (data: {
     riskTolerance: string
     investmentHorizon: string
-    investmentAmount: string
     sectorFocus: string
     rebalancingFrequency: string
   }) => void
@@ -23,7 +22,6 @@ interface PreferencesSectionProps {
 export function PreferencesSection({ onPortfolioGenerated, isPortfolioGenerated }: PreferencesSectionProps) {
   const [riskTolerance, setRiskTolerance] = useState('Select Risk Level')
   const [investmentHorizon, setInvestmentHorizon] = useState('Select Time Frame')
-  const [investmentAmount, setInvestmentAmount] = useState('Select Amount')
   const [sectorFocus, setSectorFocus] = useState('Select Sectors')
   const [rebalancingFrequency, setRebalancingFrequency] = useState('Select Frequency')
 
@@ -32,7 +30,6 @@ export function PreferencesSection({ onPortfolioGenerated, isPortfolioGenerated 
     if (
       riskTolerance === 'Select Risk Level' ||
       investmentHorizon === 'Select Time Frame' ||
-      investmentAmount === 'Select Amount' ||
       sectorFocus === 'Select Sectors' ||
       rebalancingFrequency === 'Select Frequency'
     ) {
@@ -43,7 +40,6 @@ export function PreferencesSection({ onPortfolioGenerated, isPortfolioGenerated 
     onPortfolioGenerated({
       riskTolerance,
       investmentHorizon,
-      investmentAmount,
       sectorFocus,
       rebalancingFrequency,
     })
@@ -71,18 +67,6 @@ export function PreferencesSection({ onPortfolioGenerated, isPortfolioGenerated 
             <DropdownMenuItem onSelect={() => setInvestmentHorizon('Short-term (1-3 years)')}>Short-term (1-3 years)</DropdownMenuItem>
             <DropdownMenuItem onSelect={() => setInvestmentHorizon('Medium-term (3-5 years)')}>Medium-term (3-5 years)</DropdownMenuItem>
             <DropdownMenuItem onSelect={() => setInvestmentHorizon('Long-term (5+ years)')}>Long-term (5+ years)</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-
-      <div className="space-y-2">
-        <label className="text-white/60 text-sm font-light">Investment Amount</label>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="w-full">{investmentAmount}</DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem onSelect={() => setInvestmentAmount('$1,000 - $5,000')}>$1,000 - $5,000</DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => setInvestmentAmount('$5,000 - $10,000')}>$5,000 - $10,000</DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => setInvestmentAmount('$10,000+')}>$10,000+</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

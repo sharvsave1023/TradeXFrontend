@@ -10,7 +10,6 @@ export default function PlatformPage() {
   const [portfolioData, setPortfolioData] = useState<{
     riskTolerance: string
     investmentHorizon: string
-    investmentAmount: string
     sectorFocus: string
     rebalancingFrequency: string
   } | null>(null)
