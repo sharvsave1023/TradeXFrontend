@@ -5,9 +5,11 @@ import { SideNav } from "@/components/side-nav"
 import { ScrollingTickers } from "@/components/scrolling-tickers"
 import { Preloader } from "@/components/preloader"
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
   const [isFirstVisit, setIsFirstVisit] = useState(true)
+  const router = useRouter()
 
   useEffect(() => {
     const hasVisited = localStorage.getItem('hasVisited')
@@ -57,6 +59,7 @@ export default function Page() {
                 <Button 
                   variant="ghost" 
                   size="lg"
+                  onClick={() => router.push('/platform')}
                   className="text-lg sm:text-xl md:text-3xl font-extralight text-white bg-black/20 backdrop-blur-sm rounded-[999px] hover:bg-white/100 px-6 py-4 h-auto border border-white/10 transition-all duration-300 hover:scale-105"
                 >
                   Dashboard
