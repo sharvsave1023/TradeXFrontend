@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -10,11 +11,23 @@ import {
 export function DropdownExample() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>Select Option</DropdownMenuTrigger>
+      <DropdownMenuTrigger>Navigation</DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem>Logout</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/" className="w-full">
+            Home
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/platform" className="w-full">
+            Platform
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/about" className="w-full">
+            About
+          </Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { SideNav } from "@/components/side-nav"
 import { ScrollingTickers } from "@/components/scrolling-tickers"
 import { Preloader } from "@/components/preloader"
-import { DropdownExample } from "@/components/ui/dropdown-example"
 import { useEffect, useState } from 'react'
 
 export default function Page() {
@@ -40,13 +39,10 @@ export default function Page() {
         <SideNav />
 
         <div className="relative z-10 w-full h-full flex flex-col">
-          <div className="p-12 pr-24 sm:pr-12 flex justify-between items-center">
+          <div className="p-12 pr-24 sm:pr-12">
             <h1 className="text-2xl font-extralight tracking-tight text-white opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.3}s` }}>
               Trade<span className="text-green-400">X</span>
             </h1>
-            <div className="opacity-0 animate-fade-in" style={{ animationDelay: `${baseDelay + 0.3}s` }}>
-              <DropdownExample />
-            </div>
           </div>
 
           <div className="flex-1 flex flex-col justify-center px-12 pr-24 sm:pr-12 space-y-12 -mt-48 md:-mt-32">
